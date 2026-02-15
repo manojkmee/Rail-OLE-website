@@ -1,0 +1,2198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Rail Overhead Line Construction - OHE Resources, Calculations, Documentation, and Gallery">
+    <meta name="keywords" content="OHE, Overhead Line, Railway Electrification, Dropper Calculation, Foundation Works, Pan Run">
+    <title>Rail OHE Pro - Overhead Line Construction Resources</title>
+    
+    <!-- Google AdSense - Replace with your AdSense code -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a5f7a;
+            --secondary-color: #159895;
+            --accent-color: #f39c12;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --success-color: #27ae60;
+            --warning-color: #e74c3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .top-bar {
+            background: var(--dark-color);
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 15px;
+        }
+
+        .top-bar a:hover {
+            color: var(--accent-color);
+        }
+
+        nav {
+            padding: 15px 0;
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 5px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 95, 122, 0.9), rgba(21, 152, 149, 0.9)), 
+                        url('https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=1200') center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--light-color);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 40px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* Ad Container */
+        .ad-container {
+            background: #e8e8e8;
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        .ad-horizontal {
+            min-height: 90px;
+        }
+
+        .ad-sidebar {
+            min-height: 250px;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent-color);
+            margin: 20px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Services/Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        .feature-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Gallery Section */
+        .gallery-section {
+            background: var(--light-color);
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid var(--primary-color);
+            background: white;
+            color: var(--primary-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            cursor: pointer;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* Calculator Section */
+        .calculator-section {
+            background: white;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .calculator-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .calculator-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .result-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .result-box h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .result-value {
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .result-breakdown {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .result-breakdown p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* Documentation Section */
+        .docs-section {
+            background: var(--light-color);
+        }
+
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .doc-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .doc-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .doc-info h4 {
+            color: var(--dark-color);
+            margin-bottom: 8px;
+        }
+
+        .doc-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        .doc-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--success-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #219a52;
+        }
+
+        /* Blog Section */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .blog-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            color: var(--dark-color);
+        }
+
+        .blog-content h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .blog-content h3 a:hover {
+            color: var(--primary-color);
+        }
+
+        .blog-content p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .read-more:hover {
+            color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .contact-section .section-title h2 {
+            color: white;
+        }
+
+        .contact-section .section-title p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .contact-section .section-title::after {
+            background: white;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item h4 {
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+        }
+
+        .contact-form h3 {
+            color: var(--dark-color);
+            margin-bottom: 25px;
+        }
+
+        .contact-form .form-group input,
+        .contact-form .form-group textarea {
+            background: #f8f9fa;
+        }
+
+        .contact-form .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form .btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 60px 0 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--accent-color);
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-bottom {
+            background: rgba(0,0,0,0.3);
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #888;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            max-width: 100%;
+            max-height: 85vh;
+            border-radius: 10px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+
+        .modal-caption {
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .features-grid,
+            .docs-grid,
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--primary-color);
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .features-grid,
+            .docs-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .top-bar {
+                display: none;
+            }
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .upload-zone {
+            border: 3px dashed var(--secondary-color);
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: #f8f9fa;
+        }
+
+        .upload-zone:hover {
+            background: #e8f4f4;
+            border-color: var(--primary-color);
+        }
+
+        .upload-zone i {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .upload-zone p {
+            color: #666;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 5px;
+            background: #e8e8e8;
+            padding: 5px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Calculation Tables */
+        .calc-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .calc-table th,
+        .calc-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .calc-table th {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .calc-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* Quick Tools */
+        .quick-tools {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .quick-tool-btn {
+            background: white;
+            border: 2px solid #eee;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quick-tool-btn:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .quick-tool-btn i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-left">
+                <span><i class="fas fa-phone"></i> +91 XXXXX XXXXX</span>
+                <span style="margin-left: 20px;"><i class="fas fa-envelope"></i> info@railohepro.com</span>
+            </div>
+            <div class="top-right">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="container">
+                <a href="#" class="logo">
+                    <i class="fas fa-bolt"></i>Rail OHE Pro
+                </a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#calculators">Calculators</a></li>
+                    <li><a href="#documents">Documents</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" onclick="toggleMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1><i class="fas fa-train"></i> Railway Overhead Line Construction</h1>
+            <p>Your complete resource for OHE construction documentation, calculations, technical guides, and daily progress tracking for railway electrification projects.</p>
+            <div class="hero-buttons">
+                <a href="#calculators" class="btn btn-primary"><i class="fas fa-calculator"></i> Use Calculators</a>
+                <a href="#gallery" class="btn btn-secondary"><i class="fas fa-images"></i> View Gallery</a>
+                <a href="#documents" class="btn btn-secondary"><i class="fas fa-file-download"></i> Downloads</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 id="projectCount">150+</h3>
+                    <p>Projects Documented</p>
+                </div>
+                <div class="stat-item">
+                    <h3>500+</h3>
+                    <p>Construction Photos</p>
+                </div>
+                <div class="stat-item">
+                    <h3>25+</h3>
+                    <p>Calculation Tools</p>
+                </div>
+                <div class="stat-item">
+                    <h3>10K+</h3>
+                    <p>Monthly Visitors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="container">
+        <div class="ad-container ad-horizontal">
+            <p>📢 Google AdSense Ad Space (728x90 or Responsive)</p>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>What We Offer</h2>
+                <p>Comprehensive resources for railway overhead line construction professionals</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-images"></i>
+                    <h3>Construction Gallery</h3>
+                    <p>Browse through extensive collection of OHE construction photos - foundations, mast erection, wiring, and more.</p>
+                    <a href="#gallery" class="btn btn-primary">View Gallery</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>OHE Calculators</h3>
+                    <p>Dropper length calculator, sag calculation, foundation design, tension calculations and more tools.</p>
+                    <a href="#calculators" class="btn btn-primary">Use Tools</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-file-pdf"></i>
+                    <h3>Documentation</h3>
+                    <p>Download technical documents, standards, checklists, inspection formats, and calculation sheets.</p>
+                    <a href="#documents" class="btn btn-primary">Download</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Foundation Works</h3>
+                    <p>Detailed guides on PSC mast foundations, portal foundations, and anchor foundations.</p>
+                    <a href="#" class="btn btn-primary">Learn More</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-ruler-combined"></i>
+                    <h3>Pan Run Documentation</h3>
+                    <p>Complete pan run measurement guides, tolerances, and documentation formats.</p>
+                    <a href="#" class="btn btn-primary">Explore</a>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Training Resources</h3>
+                    <p>Learning materials for OHE engineers, supervisors, and technicians.</p>
+                    <a href="#" class="btn btn-primary">Start Learning</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Construction Gallery</h2>
+                <p>Day-to-day construction activities and progress documentation</p>
+            </div>
+            
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All Photos</button>
+                <button class="filter-btn" data-filter="foundation">Foundation Works</button>
+                <button class="filter-btn" data-filter="mast">Mast Erection</button>
+                <button class="filter-btn" data-filter="wiring">Wiring & Stringing</button>
+                <button class="filter-btn" data-filter="panrun">Pan Run</button>
+                <button class="filter-btn" data-filter="testing">Testing</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Gallery items will be dynamically loaded -->
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-primary" onclick="loadMorePhotos()">
+                    <i class="fas fa-plus"></i> Load More Photos
+                </button>
+            </div>
+
+            <!-- Upload Section (For Admin) -->
+            <div class="upload-section" style="margin-top: 40px;">
+                <h3 style="margin-bottom: 20px; color: var(--dark-color);">
+                    <i class="fas fa-cloud-upload-alt"></i> Upload Your Construction Photos
+                </h3>
+                <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p><strong>Click to upload or drag and drop</strong></p>
+                    <p>PNG, JPG, JPEG (Max 5MB each)</p>
+                </div>
+                <input type="file" id="fileInput" multiple accept="image/*" style="display: none;" onchange="handleFileUpload(this.files)">
+                <div id="uploadPreview" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 20px;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="container">
+        <div class="ad-container ad-horizontal">
+            <p>📢 Google AdSense Ad Space (728x90 or Responsive)</p>
+        </div>
+    </div>
+
+    <!-- Calculator Section -->
+    <section class="calculator-section" id="calculators">
+        <div class="container">
+            <div class="section-title">
+                <h2>OHE Calculators</h2>
+                <p>Professional calculation tools for overhead line engineering</p>
+            </div>
+
+            <!-- Quick Tools -->
+            <div class="quick-tools">
+                <div class="quick-tool-btn" onclick="showCalculator('dropper')">
+                    <i class="fas fa-arrows-alt-v"></i>
+                    <span>Dropper Length</span>
+                </div>
+                <div class="quick-tool-btn" onclick="showCalculator('sag')">
+                    <i class="fas fa-wave-square"></i>
+                    <span>Sag Calculator</span>
+                </div>
+                <div class="quick-tool-btn" onclick="showCalculator('foundation')">
+                    <i class="fas fa-cube"></i>
+                    <span>Foundation</span>
+                </div>
+                <div class="quick-tool-btn" onclick="showCalculator('tension')">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <span>Wire Tension</span>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-btn active" onclick="switchTab('dropper')">Dropper Calculator</button>
+                <button class="tab-btn" onclick="switchTab('sag')">Sag Calculator</button>
+                <button class="tab-btn" onclick="switchTab('foundation')">Foundation</button>
+                <button class="tab-btn" onclick="switchTab('encumbrance')">Encumbrance</button>
+            </div>
+
+            <!-- Dropper Calculator Tab -->
+            <div class="tab-content active" id="dropper-tab">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3><i class="fas fa-ruler-vertical"></i> Dropper Length Calculator</h3>
+                        <p style="margin-bottom: 20px; color: #666;">Calculate precise dropper length for OHE contact wire system</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>System Type</label>
+                                <select id="systemType">
+                                    <option value="conventional">Conventional OHE (25kV AC)</option>
+                                    <option value="regulated">Regulated OHE</option>
+                                    <option value="highspeed">High Speed (160+ kmph)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Catenary Type</label>
+                                <select id="catenaryType">
+                                    <option value="simple">Simple Catenary</option>
+                                    <option value="compound">Compound Catenary</option>
+                                    <option value="stitched">Stitched Catenary</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Catenary Wire Height (mm)</label>
+                                <input type="number" id="catenaryHeight" value="6450" placeholder="e.g., 6450">
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Wire Height (mm)</label>
+                                <input type="number" id="contactHeight" value="5300" placeholder="e.g., 5300">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Span Length (m)</label>
+                                <input type="number" id="spanLength" value="70" placeholder="e.g., 70">
+                            </div>
+                            <div class="form-group">
+                                <label>Distance from Mast (m)</label>
+                                <input type="number" id="distFromMast" value="15" placeholder="e.g., 15">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Sag of Catenary at Point (mm)</label>
+                                <input type="number" id="sagAtPoint" value="120" placeholder="e.g., 120">
+                            </div>
+                            <div class="form-group">
+                                <label>Pre-sag of Contact Wire (mm)</label>
+                                <input type="number" id="presag" value="0" placeholder="e.g., 0">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="calculateDropper()" style="width: 100%; margin-top: 10px;">
+                            <i class="fas fa-calculator"></i> Calculate Dropper Length
+                        </button>
+
+                        <div class="result-box" id="dropperResult" style="display: none;">
+                            <h4><i class="fas fa-check-circle"></i> Calculation Results</h4>
+                            <div class="result-value" id="dropperLength">1030 mm</div>
+                            <div class="result-breakdown">
+                                <p><span>System Height Difference:</span> <span id="heightDiff">1150 mm</span></p>
+                                <p><span>Sag at Dropper Point:</span> <span id="sagValue">120 mm</span></p>
+                                <p><span>Dropper Clip Allowance:</span> <span>-40 mm</span></p>
+                                <p><span>Manufacturing Tolerance:</span> <span>±10 mm</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="ad-container ad-sidebar">
+                            <p>📢 Sidebar Ad (300x250)</p>
+                        </div>
+                        
+                        <div class="calculator-card" style="margin-top: 20px;">
+                            <h3>Standard Values Reference</h3>
+                            <table class="calc-table" style="margin-top: 0; box-shadow: none;">
+                                <tr>
+                                    <th>Parameter</th>
+                                    <th>Value</th>
+                                </tr>
+                                <tr>
+                                    <td>Contact Wire Height (Normal)</td>
+                                    <td>5300 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact Wire Height (Min)</td>
+                                    <td>4850 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>System Height</td>
+                                    <td>1150 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Encumbrance</td>
+                                    <td>2185 mm</td>
+                                </tr>
+                                <tr>
+                                    <td>Stagger (Normal)</td>
+                                    <td>±200 mm</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dropper Examples Table -->
+                <div style="margin-top: 40px;">
+                    <h3 style="margin-bottom: 20px; color: var(--dark-color);">
+                        <i class="fas fa-table"></i> Dropper Length Examples (70m Span)
+                    </h3>
+                    <table class="calc-table">
+                        <thead>
+                            <tr>
+                                <th>Dropper No.</th>
+                                <th>Distance from Mast (m)</th>
+                                <th>Catenary Sag (mm)</th>
+                                <th>CW Pre-sag (mm)</th>
+                                <th>Dropper Length (mm)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dropperExamplesTable">
+                            <tr>
+                                <td>1</td>
+                                <td>8.75</td>
+                                <td>47</td>
+                                <td>0</td>
+                                <td>1063</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>17.50</td>
+                                <td>169</td>
+                                <td>-5</td>
+                                <td>941</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>26.25</td>
+                                <td>253</td>
+                                <td>-10</td>
+                                <td>857</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>35.00</td>
+                                <td>300</td>
+                                <td>-15</td>
+                                <td>810</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>43.75</td>
+                                <td>253</td>
+                                <td>-10</td>
+                                <td>857</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>52.50</td>
+                                <td>169</td>
+                                <td>-5</td>
+                                <td>941</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>61.25</td>
+                                <td>47</td>
+                                <td>0</td>
+                                <td>1063</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Sag Calculator Tab -->
+            <div class="tab-content" id="sag-tab">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3><i class="fas fa-wave-square"></i> Catenary Sag Calculator</h3>
+                        <p style="margin-bottom: 20px; color: #666;">Calculate sag at any point along the span</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Span Length (m)</label>
+                                <input type="number" id="sagSpanLength" value="70" placeholder="e.g., 70">
+                            </div>
+                            <div class="form-group">
+                                <label>Wire Weight (kg/m)</label>
+                                <input type="number" id="wireWeight" value="1.095" step="0.001" placeholder="e.g., 1.095">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tension (kN)</label>
+                                <input type="number" id="wireTension" value="10" step="0.1" placeholder="e.g., 10">
+                            </div>
+                            <div class="form-group">
+                                <label>Temperature (°C)</label>
+                                <input type="number" id="temperature" value="35" placeholder="e.g., 35">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Distance from Support (m)</label>
+                            <input type="number" id="sagDistance" value="35" placeholder="e.g., 35">
+                        </div>
+
+                        <button class="btn btn-primary" onclick="calculateSag()" style="width: 100%;">
+                            <i class="fas fa-calculator"></i> Calculate Sag
+                        </button>
+
+                        <div class="result-box" id="sagResult" style="display: none;">
+                            <h4><i class="fas fa-check-circle"></i> Sag Results</h4>
+                            <div class="result-value" id="sagValueResult">300 mm</div>
+                            <div class="result-breakdown">
+                                <p><span>Maximum Sag (Mid-span):</span> <span id="maxSag">300 mm</span></p>
+                                <p><span>Sag at Distance:</span> <span id="sagAtDist">300 mm</span></p>
+                                <p><span>Wire Length:</span> <span id="wireLength">70.015 m</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="ad-container ad-sidebar">
+                            <p>📢 Sidebar Ad (300x250)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Foundation Calculator Tab -->
+            <div class="tab-content" id="foundation-tab">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3><i class="fas fa-cube"></i> Foundation Volume Calculator</h3>
+                        <p style="margin-bottom: 20px; color: #666;">Calculate concrete volume for OHE foundations</p>
+                        
+                        <div class="form-group">
+                            <label>Foundation Type</label>
+                            <select id="foundationType" onchange="updateFoundationFields()">
+                                <option value="psc9m">PSC Mast 9m (Standard)</option>
+                                <option value="psc11m">PSC Mast 11m</option>
+                                <option value="portal">Portal Foundation</option>
+                                <option value="anchor">Anchor Foundation</option>
+                                <option value="custom">Custom Dimensions</option>
+                            </select>
+                        </div>
+                        
+                        <div id="foundationDimensions">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Length (m)</label>
+                                    <input type="number" id="foundLength" value="1.4" step="0.1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Width (m)</label>
+                                    <input type="number" id="foundWidth" value="1.4" step="0.1">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Depth (m)</label>
+                                    <input type="number" id="foundDepth" value="2.0" step="0.1">
+                                </div>
+                                <div class="form-group">
+                                    <label>Mast Pocket (m³)</label>
+                                    <input type="number" id="mastPocket" value="0.15" step="0.01">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="calculateFoundation()" style="width: 100%;">
+                            <i class="fas fa-calculator"></i> Calculate Volume
+                        </button>
+
+                        <div class="result-box" id="foundationResult" style="display: none;">
+                            <h4><i class="fas fa-check-circle"></i> Foundation Results</h4>
+                            <div class="result-value" id="concreteVolume">3.77 m³</div>
+                            <div class="result-breakdown">
+                                <p><span>Gross Volume:</span> <span id="grossVolume">3.92 m³</span></p>
+                                <p><span>Mast Pocket Deduction:</span> <span id="pocketDeduction">0.15 m³</span></p>
+                                <p><span>Cement Required (1:2:4):</span> <span id="cementReq">1.32 MT</span></p>
+                                <p><span>Sand Required:</span> <span id="sandReq">2.01 m³</span></p>
+                                <p><span>Aggregate Required:</span> <span id="aggReq">4.02 m³</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="ad-container ad-sidebar">
+                            <p>📢 Sidebar Ad (300x250)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Encumbrance Calculator Tab -->
+            <div class="tab-content" id="encumbrance-tab">
+                <div class="calculator-grid">
+                    <div class="calculator-card">
+                        <h3><i class="fas fa-arrows-alt-h"></i> Encumbrance Calculator</h3>
+                        <p style="margin-bottom: 20px; color: #666;">Calculate mast placement from track center</p>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Track Type</label>
+                                <select id="trackType">
+                                    <option value="straight">Straight Track</option>
+                                    <option value="curve">Curved Track</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Track Gauge (mm)</label>
+                                <input type="number" id="trackGauge" value="1676" placeholder="e.g., 1676">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Curve Radius (m)</label>
+                                <input type="number" id="curveRadius" value="500" placeholder="For curves only">
+                            </div>
+                            <div class="form-group">
+                                <label>Cant/Super-elevation (mm)</label>
+                                <input type="number" id="cantValue" value="0" placeholder="e.g., 100">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" onclick="calculateEncumbrance()" style="width: 100%;">
+                            <i class="fas fa-calculator"></i> Calculate Encumbrance
+                        </button>
+
+                        <div class="result-box" id="encumbranceResult" style="display: none;">
+                            <h4><i class="fas fa-check-circle"></i> Encumbrance Results</h4>
+                            <div class="result-value" id="encumbranceValue">2185 mm</div>
+                            <div class="result-breakdown">
+                                <p><span>Minimum Encumbrance:</span> <span>2185 mm</span></p>
+                                <p><span>Recommended:</span> <span>2500 mm</span></p>
+                                <p><span>Structure Gauge:</span> <span>1676 mm</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="ad-container ad-sidebar">
+                            <p>📢 Sidebar Ad (300x250)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section class="docs-section" id="documents">
+        <div class="container">
+            <div class="section-title">
+                <h2>Documentation & Downloads</h2>
+                <p>Technical documents, standards, and calculation sheets</p>
+            </div>
+
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Dropper Calculation Sheet</h4>
+                        <p>Complete Excel sheet for dropper length calculations with all formulas</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-file"></i> Excel</span>
+                            <span><i class="fas fa-download"></i> 2.5k downloads</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>OHE Installation Manual</h4>
+                        <p>Comprehensive guide for 25kV AC OHE installation procedures</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-file"></i> PDF</span>
+                            <span><i class="fas fa-download"></i> 5.2k downloads</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Foundation Quantity Sheet</h4>
+                        <p>Material calculation sheet for different types of OHE foundations</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-file"></i> Excel</span>
+                            <span><i class="fas fa-download"></i> 1.8k downloads</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-pdf"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Pan Run Measurement Format</h4>
+                        <p>Standard format for pan run documentation with tolerances</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-file"></i> PDF</span>
+                            <span><i class="fas fa-download"></i> 3.1k downloads</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-word"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Inspection Checklist</h4>
+                        <p>Complete checklist for OHE construction inspection</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-file"></i> Word</span>
+                            <span><i class="fas fa-download"></i> 2.3k downloads</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+
+                <div class="doc-card">
+                    <div class="doc-icon">
+                        <i class="fas fa-file-excel"></i>
+                    </div>
+                    <div class="doc-info">
+                        <h4>Sag-Tension Chart</h4>
+                        <p>Temperature-wise sag and tension values for different conductors</p>
+                        <div class="doc-meta">
+                            <span><i class="fas fa-file"></i> Excel</span>
+                            <span><i class="fas fa-download"></i> 4.5k downloads</span>
+                        </div>
+                        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ad Space -->
+    <div class="container">
+        <div class="ad-container ad-horizontal">
+            <p>📢 Google AdSense Ad Space (728x90 or Responsive)</p>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Articles & Updates</h2>
+                <p>Stay updated with OHE construction knowledge and techniques</p>
+            </div>
+
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1527684651001-731c474bbb5a?w=600" alt="Foundation Work">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 15, 2024</span>
+                            <span><i class="far fa-folder"></i> Foundation</span>
+                        </div>
+                        <h3><a href="#">Complete Guide to PSC Mast Foundation Construction</a></h3>
+                        <p>Learn the step-by-step process of constructing PSC mast foundations including excavation, reinforcement, and concreting.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600" alt="OHE Wiring">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 10, 2024</span>
+                            <span><i class="far fa-folder"></i> Wiring</span>
+                        </div>
+                        <h3><a href="#">Understanding Dropper Calculations: A Complete Guide</a></h3>
+                        <p>Master the dropper length calculations with practical examples and real-world applications in OHE systems.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600" alt="Pan Run">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-meta">
+                            <span><i class="far fa-calendar"></i> Dec 5, 2024</span>
+                            <span><i class="far fa-folder"></i> Pan Run</span>
+                        </div>
+                        <h3><a href="#">Pan Run Measurement: Standards and Tolerances</a></h3>
+                        <p>Detailed explanation of pan run measurements, acceptable tolerances, and documentation requirements.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-primary"><i class="fas fa-newspaper"></i> View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Have questions or want to contribute? Reach out to us!</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <p>Railway Electrification Office<br>Your City, India</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+91 XXXXX XXXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@railohepro.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form onsubmit="handleContactForm(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" required placeholder="Enter your name">
+                            </div>
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" required placeholder="Enter your email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Subject</label>
+                            <input type="text" required placeholder="Enter subject">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea required placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3><i class="fas fa-bolt" style="color: var(--accent-color);"></i> Rail OHE Pro</h3>
+                    <p>Your complete resource for railway overhead line construction. We provide calculators, documentation, galleries, and technical resources for OHE professionals.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#calculators">Calculators</a></li>
+                        <li><a href="#documents">Downloads</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Dropper Calculator</a></li>
+                        <li><a href="#">Sag Calculator</a></li>
+                        <li><a href="#">Foundation Guide</a></li>
+                        <li><a href="#">Pan Run Format</a></li>
+                        <li><a href="#">Standards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                        <li><a href="#">Copyright</a></li>
+                        <li><a href="#">Sitemap</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2024 Rail OHE Pro. All Rights Reserved. | Designed for Railway Electrification Professionals</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Image Modal -->
+    <div class="modal" id="imageModal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Gallery Data
+        const galleryData = [
+            { src: 'https://images.unsplash.com/photo-1527684651001-731c474bbb5a?w=600', title: 'Foundation Excavation', category: 'foundation', date: '15 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=600', title: 'Mast Erection Work', category: 'mast', date: '14 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=600', title: 'Contact Wire Installation', category: 'wiring', date: '13 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600', title: 'Pan Run Inspection', category: 'panrun', date: '12 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=600', title: 'Continuity Testing', category: 'testing', date: '11 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1513457gy1a57d6e?w=600', title: 'Concrete Pouring', category: 'foundation', date: '10 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600', title: 'Portal Structure', category: 'mast', date: '09 Dec 2024' },
+            { src: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600', title: 'Catenary Wire Stringing', category: 'wiring', date: '08 Dec 2024' },
+        ];
+
+        // Load Gallery
+        function loadGallery(filter = 'all') {
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+            
+            const filteredData = filter === 'all' ? galleryData : galleryData.filter(item => item.category === filter);
+            
+            filteredData.forEach((item, index) => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `
+                    <img src="${item.src}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/400x400?text=OHE+Construction'">
+                    <div class="gallery-overlay">
+                        <h4>${item.title}</h4>
+                        <span>${item.date}</span>
+                    </div>
+                `;
+                galleryItem.onclick = () => openModal(item.src, item.title);
+                grid.appendChild(galleryItem);
+            });
+        }
+
+        // Filter Gallery
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                loadGallery(this.dataset.filter);
+            });
+        });
+
+        // Modal Functions
+        function openModal(src, caption) {
+            document.getElementById('imageModal').classList.add('active');
+            document.getElementById('modalImage').src = src;
+            document.getElementById('modalCaption').textContent = caption;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').classList.remove('active');
+        }
+
+        // Load More Photos
+        function loadMorePhotos() {
+            alert('This would load more photos from your database/storage');
+        }
+
+        // File Upload Handler
+        function handleFileUpload(files) {
+            const preview = document.getElementById('uploadPreview');
+            preview.innerHTML = '';
+            
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.style.cssText = 'position: relative; width: 150px; height: 150px;';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        <span style="position: absolute; top: 5px; right: 5px; background: #e74c3c; color: white; width: 25px; height: 25px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer;">&times;</span>
+                    `;
+                    preview.appendChild(div);
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            document.querySelector(`[onclick="switchTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(`${tabName}-tab`).classList.add('active');
+        }
+
+        function showCalculator(calcName) {
+            switchTab(calcName);
+            document.getElementById('calculators').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Dropper Calculator
+        function calculateDropper() {
+            const catenaryHeight = parseFloat(document.getElementById('catenaryHeight').value);
+            const contactHeight = parseFloat(document.getElementById('contactHeight').value);
+            const sagAtPoint = parseFloat(document.getElementById('sagAtPoint').value);
+            const presag = parseFloat(document.getElementById('presag').value);
+            
+            const heightDiff = catenaryHeight - contactHeight;
+            const dropperLength = heightDiff - sagAtPoint - presag - 40; // 40mm clip allowance
+            
+            document.getElementById('dropperResult').style.display = 'block';
+            document.getElementById('dropperLength').textContent = dropperLength.toFixed(0) + ' mm';
+            document.getElementById('heightDiff').textContent = heightDiff + ' mm';
+            document.getElementById('sagValue').textContent = sagAtPoint + ' mm';
+        }
+
+        // Sag Calculator
+        function calculateSag() {
+            const span = parseFloat(document.getElementById('sagSpanLength').value);
+            const weight = parseFloat(document.getElementById('wireWeight').value);
+            const tension = parseFloat(document.getElementById('wireTension').value) * 1000;
+            const distance = parseFloat(document.getElementById('sagDistance').value);
+            
+            // Parabolic sag formula: S = (w * L^2) / (8 * T)
+            const maxSag = (weight * 9.81 * span * span) / (8 * tension) * 1000;
+            
+            // Sag at distance x from support: S(x) = 4 * Smax * x * (L - x) / L^2
+            const sagAtDist = 4 * maxSag * distance * (span - distance) / (span * span);
+            
+            document.getElementById('sagResult').style.display = 'block';
+            document.getElementById('sagValueResult').textContent = maxSag.toFixed(0) + ' mm';
+            document.getElementById('maxSag').textContent = maxSag.toFixed(0) + ' mm';
+            document.getElementById('sagAtDist').textContent = sagAtDist.toFixed(0) + ' mm';
+            document.getElementById('wireLength').textContent = (span + (8 * maxSag * maxSag / 1000000) / (3 * span)).toFixed(3) + ' m';
+        }
+
+        // Foundation Calculator
+        function calculateFoundation() {
+            const length = parseFloat(document.getElementById('foundLength').value);
+            const width = parseFloat(document.getElementById('foundWidth').value);
+            const depth = parseFloat(document.getElementById('foundDepth').value);
+            const pocket = parseFloat(document.getElementById('mastPocket').value);
+            
+            const grossVolume = length * width * depth;
+            const netVolume = grossVolume - pocket;
+            
+            // Material calculation for M15 (1:2:4) - dry volume factor 1.52
+            const dryVolume = netVolume * 1.52;
+            const cement = (dryVolume / 7) * 1.44; // Cement in MT (1440 kg/m³)
+            const sand = (dryVolume / 7) * 2;
+            const aggregate = (dryVolume / 7) * 4;
+            
+            document.getElementById('foundationResult').style.display = 'block';
+            document.getElementById('concreteVolume').textContent = netVolume.toFixed(2) + ' m³';
+            document.getElementById('grossVolume').textContent = grossVolume.toFixed(2) + ' m³';
+            document.getElementById('pocketDeduction').textContent = pocket.toFixed(2) + ' m³';
+            document.getElementById('cementReq').textContent = cement.toFixed(2) + ' MT';
+            document.getElementById('sandReq').textContent = sand.toFixed(2) + ' m³';
+            document.getElementById('aggReq').textContent = aggregate.toFixed(2) + ' m³';
+        }
+
+        function updateFoundationFields() {
+            const type = document.getElementById('foundationType').value;
+            const dims = {
+                'psc9m': { l: 1.4, w: 1.4, d: 2.0, p: 0.15 },
+                'psc11m': { l: 1.6, w: 1.6, d: 2.5, p: 0.18 },
+                'portal': { l: 2.0, w: 2.0, d: 3.0, p: 0.25 },
+                'anchor': { l: 1.2, w: 1.2, d: 2.5, p: 0 },
+                'custom': { l: 1.0, w: 1.0, d: 1.0, p: 0 }
+            };
+            
+            if (dims[type]) {
+                document.getElementById('foundLength').value = dims[type].l;
+                document.getElementById('foundWidth').value = dims[type].w;
+                document.getElementById('foundDepth').value = dims[type].d;
+                document.getElementById('mastPocket').value = dims[type].p;
+            }
+        }
+
+        // Encumbrance Calculator
+        function calculateEncumbrance() {
+            const gauge = parseFloat(document.getElementById('trackGauge').value);
+            const cant = parseFloat(document.getElementById('cantValue').value);
+            const radius = parseFloat(document.getElementById('curveRadius').value);
+            
+            // Basic encumbrance calculation
+            let encumbrance = 2185; // Minimum for BG
+            
+            if (cant > 0) {
+                encumbrance += cant / 10; // Simplified adjustment for cant
+            }
+            
+            document.getElementById('encumbranceResult').style.display = 'block';
+            document.getElementById('encumbranceValue').textContent = encumbrance.toFixed(0) + ' mm';
+        }
+
+        // Contact Form Handler
+        function handleContactForm(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+        }
+
+        // Smooth Scroll for Navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Active Navigation on Scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            
+            // Animate stats on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                    }
+                });
+            });
+            
+            const stats = document.querySelector('.stats');
+            if (stats) observer.observe(stats);
+        });
+
+        function animateStats() {
+            // Simple counter animation could be added here
+        }
+    </script>
+</body>
+</html>
